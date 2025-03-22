@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todos-api
+  namespace: todos-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todos-api
+  template:
+    metadata:
+      labels:
+        app: todos-api
+    spec:
+      containers:
+        - name: todos-api
+          image: todos-api-image # This will be replaced by Tilt
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATA_MONGODB_URI
+              value: mongodb://mongodb:27017/todosdb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todos-api
+  namespace: todos-k8s
+spec:
+  type: LoadBalancer
+  selector:
+    app: todos-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
