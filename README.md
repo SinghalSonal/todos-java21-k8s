@@ -12,6 +12,7 @@ Todos crud api built using modern tech stack:
     * MongoDB
     * Redis
 * Kubernetes Container
+    * k8s cluster in Docker Desktop
     * Tilt
 
 ## Local Development Setup
@@ -23,7 +24,8 @@ Here's how to set up and run the project locally using Docker and Gradle:
 *   
 *   Java 21 JDK installed.
 *   Gradle installed (or use the Gradle wrapper).
-*   Kubernetes cluster (example: Docker Desktop installed and running with Kubernetes enabled)
+*   Kubernetes cluster 
+    * example: Docker Desktop installed and running with Kubernetes enabled or kind cluster in local
 *   Tilt (mac: brew install tilt)
 
 ### Steps
